@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title= "Login"
+        link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    body
+        if messages.info
+            div.alert.alert-danger
+                p=messages.info
+        .container.mt-5
+            .row.justify-content-center
+                h1 Bienvenue sur le Back-Office
+            .row.justify-content-center.mt-3
+                h2 Identifiez-vous
+            .row.justify-content-center.mt-3.pr-0.pl-0
+                .col-7
+                    form(method="POST" action="/admin/login" )
+                        .form-group
+                            label(for='name') Nom
+                            input#nom.form-control(type='text' name="name" placeholder='Votre nom' required)
+                        .form-group
+                            label(for='password') Mot de passe
+                            input#password.form-control(type='password' name="password" placeholder='Mot de passe' required)
+                        button.btn.btn-primary.btn-block(type='submit') Connexion

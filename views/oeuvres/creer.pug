@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    if messages.info
+        div.alert.alert-warning
+            p=messages.info
+    .container
+        h3.mt-5.mb-3="Ajouter une oeuvre"
+        form.form-control.bg-light.mb-5(method="POST", action="/admin/oeuvres/creer",enctype="multipart/form-data",ref='uploadForm' )
+            .form-group
+                label(for='name') Nom
+                input(class="form-control", required="required",name="name",placeholder="Nom de l'oeuvre",type="text")
+            .form-group
+                label(for='description') Descritption
+                textarea(class="form-control", name="description",required, placeholder="Description de l'oeuvre")
+            .form-group
+                label(for='size') Taille
+                input(class="form-control",name="size",required,placeholder="La taille de l'oeuvre",type="text")
+                small.form-text Taille en cm. Ne pas mettre l'unité
+            .form-group
+                label(for='price') Prix
+                input(class="form-control",name="price",required,placeholder="Le prix de l'oeuvre",type="text")
+                small.form-text Prix en euro, ne pas mettre le signe "€"
+            .form-group
+                select.form-control(name="state", class="form-control")="L'oeuvre est elle vendu ?" 
+                    option(value='1') En vente
+                    option(value='0') Vendu
+            .form-group
+                label.h5(for='picture') Ajouter une photo ici :
+                input(type="file",name="picture",class="alert alert-primary", accept="image/*", capture="capture")
+            .row.justify-content-center
+                button.btn.btn-success.btn-lg(type="submit",value='Upload!') Valider   

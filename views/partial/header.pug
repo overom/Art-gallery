@@ -1,0 +1,18 @@
+header
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.justify-content-between
+    a.navbar-brand(href='/admin/home') Back-Office
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a.nav-link(href='/admin/dashboard') Dashboard
+        li.nav-item
+          a.nav-link(href='/admin/oeuvres') Oeuvres
+        li.nav-item
+          a.nav-link(href='/admin/users') Utilisateurs
+        li.nav-item
+          a.nav-link(href='/admin/commandes') Commandes
+      a(href="/admin/logout").btn.btn-danger Deconnexion
+        
+

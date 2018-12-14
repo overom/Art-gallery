@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    .container.mb-5
+        a.btn.btn-primary.mt-3(href="/admin/oeuvres")
+            i.fas.fa-arrow-left
+            |  Retour
+        h3.mt-3.mb-3=`Modifier l'oeuvre : ${oeuvre.name}`
+        form.form-control.bg-light(method="POST", action=`/admin/oeuvres/modification/${oeuvre.id}`,enctype="multipart/form-data")
+            .form-group
+                label(for='name') Nom
+                input(class="form-control", required="required",name="name",value=`${oeuvre.name}`,type="text")
+            .form-group
+                label(for='description') Description
+                textarea(class="form-control", name="description",required)=oeuvre.description
+            .form-group
+                label(for='size') Taille
+                input(class="form-control", name="size",required,value=`${oeuvre.size}`,type="text")
+                small.form-text Taille en cm. Ne pas mettre l'unité
+            .form-group
+                label(for='price') Prix
+                input(class="form-control",name="price",required,value=`${oeuvre.price}`,type="text")
+                small.form-text Prix en euro, ne pas mettre le signe "€"
+            .form-group
+                select.form-control(name="state", class="form-control")="L'oeuvre est elle vendu ?" 
+                    option(value='1', selected= oeuvre.state === 1) En vente
+                    option(value='0', selected= !oeuvre.state) Vendu
+            .form-group
+                .border.p-2
+                    p.text-center="Image actuel : "
+                        img#imgModif(src=`/uploads/${oeuvre.picture}`)
+                    label.h5.mr-2(for="picture") Modifier la photo ici : 
+                    input(type="file",name="photo",class="alert alert-primary", accept="image/*", capture="capture")
+            .row.justify-content-center
+                button(type="submit",class="btn btn-success btn-lg",value="Upload!") Mettre la jour l'oeuvre   

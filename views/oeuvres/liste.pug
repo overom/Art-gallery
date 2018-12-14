@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+    .container.mb-5
+        h3.mt-5.mb-3="Liste des Oeuvres"
+            a#boutonAjouerOeuvre.btn.btn-primary.float-right(href="/admin/oeuvres/ajouter") Ajouter une nouvelle oeuvre
+                i.fas.fa-plus-circle.fa-lg.ml-4
+        table.table.table-striped.text-center
+            tr
+                th
+                    p="Nom"
+                th
+                    p="Descritption"
+                th
+                    p="Taille"
+                th
+                    p="Prix"
+                th
+                    p="Photo"
+                th
+                    p="Disponibilité"
+                th
+                    
+                th
+                    
+            each oeuvre in oeuvres   
+                tr
+                    td
+                        p=oeuvre.name
+                    td
+                        p=oeuvre.description
+                    td
+                        p=`${oeuvre.size}cm`
+                    td
+                        p=`${oeuvre.price}€`
+                    td
+                        img.img-fluid(style="max-width: 60%; height: auto" alt=`${oeuvre.picture}` src= `/uploads/${oeuvre.picture}`)
+                    td
+                        if oeuvre.state
+                            p="En vente"
+                        else
+                            p="Vendu"
+                    td
+                        a.btn.btn-outline-info(href=`/admin/oeuvres/modifier/${oeuvre.id}`) Modifier
+                    td            
+                        button.btn.btn-outline-danger(type='button', data-toggle='modal', data-target='#deleteModal') Supprimer
+                #deleteModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteModalLabel', aria-hidden='true')
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5#deleteModalLabel.modal-title=`Supprimer l'oeuvre : ${oeuvre.name}`
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            .modal-body.text-center
+                                | Attention la suppression d'une oeuvre est definitive !
+                            .modal-footer
+                                button.btn.btn-secondary(type='button', data-dismiss='modal') Annuler
+                                a.btn.btn-danger(type='button' href=`/admin/oeuvres/supprimeroeuvre/${oeuvre.id}`)=`Supprimer ${oeuvre.name}`

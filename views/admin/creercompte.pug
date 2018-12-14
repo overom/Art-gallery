@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    h3="Créer un compte"
+    form(method="POST", action="/admin/enregistrer")
+        input(class="form-control",type="text" required="required",pattern=".{3,}",name="name",placeholder="Votre nom")
+        input(class="form-control",type="password" required="required",pattern=".{3,}",name="password",placeholder="Mot de passe")
+        button(type="submit",class="btn btn-success") Valider
