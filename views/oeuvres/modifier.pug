@@ -14,6 +14,19 @@ block content
                 label(for='description') Description
                 textarea(class="form-control", name="description",required)=oeuvre.description
             .form-group
+                p Catégorie de l'oeuvre
+                .form-check
+                    input#personage.form-check-input(type='radio', name='category', value='personage' checked=oeuvre.category==="personage"?true:false )
+                    label.form-check-label(for='personage') Personage
+                .form-check
+                    input#tableau.form-check-input(type='radio', name='category', value='tableau' checked=oeuvre.category==="tableau"?true:false)
+                    label.form-check-label(for='tableau') Tableau
+                small.form-text Chaque oeuvre doit appartenir à une catégorie
+            .form-group
+                label(for='materials') Matière
+                input(class="form-control",name="materials",value=`${oeuvre.materials}`,required,placeholder="Les matériaux utilisés",type="text")
+                small.form-text Chaque matière utilisé séparée par une virgule
+            .form-group
                 label(for='size') Taille
                 input(class="form-control", name="size",required,value=`${oeuvre.size}`,type="text")
                 small.form-text Taille en cm. Ne pas mettre l'unité

@@ -14,6 +14,19 @@ block content
                 label(for='description') Descritption
                 textarea(class="form-control", name="description",required, placeholder="Description de l'oeuvre")
             .form-group
+                p Catégorie de l'oeuvre
+                .form-check
+                    input#personnage.form-check-input(type='radio', name='category', value='personnage')
+                    label.form-check-label(for='personnage') Personnage
+                .form-check
+                    input#tableau.form-check-input(type='radio', name='category', value='tableau')
+                    label.form-check-label(for='tableau') Tableau
+                small.form-text Chaque oeuvre doit appartenir à une catégorie
+            .form-group
+                label(for='materials') Matière
+                input(class="form-control",name="materials",required,placeholder="Les matériaux utilisés",type="text")
+                small.form-text Chaque matière utilisé séparée par une virgule
+            .form-group
                 label(for='size') Taille
                 input(class="form-control",name="size",required,placeholder="La taille de l'oeuvre",type="text")
                 small.form-text Taille en cm. Ne pas mettre l'unité
@@ -26,7 +39,11 @@ block content
                     option(value='1') En vente
                     option(value='0') Vendu
             .form-group
+                label(for='date') Date de creation
+                br
+                input#datepicker(name="date" data-date-format='dd/mm/yyyy')
+            .form-group
                 label.h5(for='picture') Ajouter une photo ici :
                 input(type="file",name="picture",class="alert alert-primary", accept="image/*", capture="capture")
             .row.justify-content-center
-                button.btn.btn-success.btn-lg(type="submit",value='Upload!') Valider   
+                button.btn.btn-success.btn-lg(type="submit",value='Upload!') Valider

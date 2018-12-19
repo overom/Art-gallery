@@ -6,40 +6,46 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.FLOAT
       },
       state: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN
       },
       category: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       picture: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       size: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
+      },
+      materials: {
+        type: Sequelize.STRING
+      },
+      date: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Oeuvres');
-  },
+  }
 };

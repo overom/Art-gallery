@@ -1,6 +1,7 @@
 const db = require(`../models/index.js`);
 const bcrypt = require('bcrypt-nodejs');
 const store = require('store');
+const messageCreationDate = require('../lib/parseDate');
 
 class AdminController {
   admin(req, res) {
@@ -61,12 +62,18 @@ class AdminController {
   }
   creerOeuvre(req, res) {
     const data = req.body;
+    const materials = data.materials
+      .split(',')
+      .map(material => material.trim())
+      .join();
+    data.materials = materials;
+
     const { picture } = req.files;
     if (picture) {
       picture.mv(`public/uploads/${picture.name}`, () => {
         data.picture = picture.name;
         req.flash('success', `Oeuvre ${req.body.name} ajouté avec succès`);
-        return db.Oeuvre.create(data).then(oeuvre => res.redirect('/admin/home'));
+        return db.Oeuvre.create(data).then(oeuvre => res.redirect('/admin/oeuvres'));
       });
     } else {
       req.flash('info', 'Chaque oeuvre doit avoir une image');
@@ -86,6 +93,19 @@ class AdminController {
     db.Oeuvre.findById(req.params.id).then(oeuvre =>
       oeuvre.destroy().then(() => res.redirect('/admin/oeuvres'))
     );
+  }
+  //Messages
+  messages(req, res) {
+    db.Message.findAll().then(messages => {
+      res.render('messages/liste', { messages });
+    });
+  }
+  messageLu(req, res) {
+    db.Message.findById(req.params.id).then(message => {
+      message.state ^= 1;
+      message.save();
+      res.redirect('/admin/messages');
+    });
   }
 }
 module.exports = AdminController;

@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    .container.mb-5
+        h3.mt-5.mb-3="Liste des Messages"
+        table.table.table-striped.table-bordered
+            thead.thead-dark
+                tr
+                    th(scope='col') Reçu le
+                    th(scope='col') Nom
+                    th(scope='col') Email
+                    th(scope='col') Sujet
+                    th(scope='col') Message
+                    th(scope='col') Etat
+            tbody
+            each message in messages
+                tr(class=message.state?"table-success":"table-danger")
+                    th(scope='row')=message.date
+                    td=message.name
+                    td=message.email
+                    td=message.sujet
+                    td=message.message
+                    if message.state
+                        td.bg-success.text-center
+                            a.btn.btn-success.btn-lg.btn-block(href=`/admin/message/lu/${message.id}`) Lu
+                    else
+                        td.bg-danger
+                            a.btn.btn-danger.btn-lg.btn-block(href=`/admin/message/lu/${message.id}`) Non lu

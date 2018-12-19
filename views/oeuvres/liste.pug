@@ -1,14 +1,23 @@
 extends ../layout
 
 block content
+    if messages.success
+        div.alert.alert-success
+            p=messages.success
     .container.mb-5
         h3.mt-5.mb-3="Liste des Oeuvres"
             a#boutonAjouerOeuvre.btn.btn-primary.float-right(href="/admin/oeuvres/ajouter") Ajouter une nouvelle oeuvre
                 i.fas.fa-plus-circle.fa-lg.ml-4
+        span
+            p Coup d'oeil global de chaque oeuvre. Les matières sont visiblent en cliquant sur "Modifier"
         table.table.table-striped.text-center
             tr
                 th
                     p="Nom"
+                th
+                    p="Catégorie"
+                th
+                    p="Créé le"
                 th
                     p="Descritption"
                 th
@@ -27,6 +36,10 @@ block content
                 tr
                     td
                         p=oeuvre.name
+                    td
+                        p=oeuvre.category
+                    td
+                        p=oeuvre.date
                     td
                         p=oeuvre.description
                     td
