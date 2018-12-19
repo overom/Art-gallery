@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import TextField from '@material-ui/core/TextField';
 import { MenuItem, Button } from '@material-ui/core';
 import axios from 'axios';
@@ -47,7 +47,7 @@ class FormContact extends Component {
 
   render() {
     return (
-      <Container>
+      <div>
         <form onSubmit={this.handleSubmit}>
           <Row className="justify-content-center">
             <TextField
@@ -105,7 +105,7 @@ class FormContact extends Component {
           </Row>
         </form>
         <SnackBarMessage />
-      </Container>
+      </div>
     );
   }
 }

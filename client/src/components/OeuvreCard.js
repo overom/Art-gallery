@@ -53,6 +53,9 @@ class OeuvreCard extends Component {
 
   render() {
     const { classes, oeuvres } = this.props;
+    console.log('====================================');
+    console.log(oeuvres);
+    console.log('====================================');
 
     return (
       <div>
@@ -105,7 +108,7 @@ class OeuvreCard extends Component {
           <img src={`/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
           <List>
             <ListItem button>
-              <ListItemText primary="Details de l'oeuvre" />
+              <ListItemText className="text-center" primary="Details" />
             </ListItem>
             <Divider />
             <ListItem button>
@@ -116,6 +119,12 @@ class OeuvreCard extends Component {
             </ListItem>
             <ListItem button>
               <ListItemText primary="Prix" secondary={`${oeuvres.price} €`} />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="Matériaux Utilisées" secondary={`${oeuvres.meterials}`} />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="Créé le" secondary={`${oeuvres.date}`} />
             </ListItem>
           </List>
         </Dialog>

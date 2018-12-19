@@ -22,6 +22,9 @@ class Navigation extends React.Component {
   };
 
   render() {
+    console.log('====================================');
+    console.log(this.state.value);
+    console.log('====================================');
     const { classes, history } = this.props;
 
     return (

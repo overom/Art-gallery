@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FormContact from './Form/FormContact';
+import { Container, Row } from 'reactstrap';
 
 class Contact extends Component {
   constructor(props) {
@@ -8,10 +9,12 @@ class Contact extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Contact</h1>
+      <Container>
+        <Row className="justify-content-center mt-2">
+          <h1>Contact</h1>
+        </Row>
         <FormContact />
-      </div>
+      </Container>
     );
   }
 }

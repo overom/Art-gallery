@@ -74,8 +74,8 @@ class News extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <Row>
+        <Container fluid>
+          <Row className="mt-2 mb-2 justify-content-center">
             <h1>Nouveautés</h1>
           </Row>
           <Paper elevation={24}>
@@ -90,6 +90,10 @@ class News extends Component {
 
                 <Typography variant="h6" className="text-center mt-5">
                   {this.getNewOeuvresInfo()}
+                </Typography>
+                <Typography className="text-center mt-5" variant="subtitle2">
+                  Retrouvez toutes les oeuvres dans la{' '}
+                  <span onClick={() => this.props.history.push('/gallery')}>galerie</span>
                 </Typography>
               </Col>
             </Row>
