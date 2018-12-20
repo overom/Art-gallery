@@ -63,7 +63,7 @@ class OeuvreCard extends Component {
           <CardActionArea onClick={this.handleClickOpen}>
             <CardMedia
               className={classes.media}
-              image={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
+              image={`/api/pictures/${oeuvres.picture}`}
               title={oeuvres.name}
             />
             <CardContent>
@@ -105,7 +105,7 @@ class OeuvreCard extends Component {
               <Button color="inherit">Acheter</Button>
             </Toolbar>
           </AppBar>
-          <img src={`http://localhost:5001/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
+          <img src={`/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
           <List>
             <ListItem button>
               <ListItemText className="text-center" primary="Details" />
