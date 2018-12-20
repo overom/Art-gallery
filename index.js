@@ -75,6 +75,13 @@ app.use('/api', api);
 app.use('/user', user);
 app.use('/auth', auth);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 // Handle 404
 app.use((req, res) => {
   res.status(404);
@@ -90,13 +97,6 @@ app.use((error, req, res, next) => {
     error: error,
   });
 });
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
 
 const PORT = process.env.PORT || 5001;
 
