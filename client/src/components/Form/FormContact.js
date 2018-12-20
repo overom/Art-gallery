@@ -6,6 +6,7 @@ import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/fr';
 import SnackBarMessage from '../SnackBarMessage';
+import { withRouter } from 'react-router-dom';
 
 const sujet = [
   {
@@ -40,9 +41,13 @@ class FormContact extends Component {
   };
 
   handleSubmit(e) {
+    const { history } = this.props;
     const { name, email, sujet, message, date, state } = this.state;
     e.preventDefault();
-    axios.post('/api/contact', { name, email, sujet, message, date, state });
+    axios
+      .post('/api/contact', { name, email, sujet, message, date, state })
+
+      .then(history.push({ pathname: '/', message: true }));
   }
 
   render() {
@@ -104,10 +109,9 @@ class FormContact extends Component {
             </Button>
           </Row>
         </form>
-        <SnackBarMessage />
       </div>
     );
   }
 }
 
-export default FormContact;
+export default withRouter(FormContact);

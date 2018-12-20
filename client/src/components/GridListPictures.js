@@ -44,7 +44,10 @@ class GridListPictures extends Component {
           {oeuvres &&
             oeuvres.map(oeuvres => (
               <GridListTile key={oeuvres.name}>
-                <img src={`/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
+                <img
+                  src={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
+                  alt={oeuvres.name}
+                />
               </GridListTile>
             ))}
         </GridList>

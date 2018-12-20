@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Container, Row, Col } from 'reactstrap';
 import { Typography, Paper } from '@material-ui/core';
 import Presentation from './Presentation';
+import SnackBarMessage from './SnackBarMessage';
 const styles = theme => ({
   background: {
     backgroundColor: theme.palette.secondary.main,
@@ -27,6 +28,9 @@ class Landing extends Component {
   }
   render() {
     const { classes } = this.props;
+    console.log('====================================');
+    console.log(this.props);
+    console.log('====================================');
 
     if (this.state.isLoading) {
       return <Loader />;
@@ -63,6 +67,7 @@ class Landing extends Component {
           </Row>
           <Presentation />
         </Container>
+        {this.props.location.message ? <SnackBarMessage /> : null}
       </div>
     );
   }

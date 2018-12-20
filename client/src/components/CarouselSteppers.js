@@ -76,7 +76,7 @@ class SwipeableTextMobileStepper extends React.Component {
               {Math.abs(activeStep - index) <= 2 ? (
                 <img
                   className={classes.img}
-                  src={`/api/pictures/${step.picture}`}
+                  src={`http://localhost:5001/api/pictures/${step.picture}`}
                   alt={step.name}
                 />
               ) : null}

@@ -4,4 +4,55 @@ block content
         div.alert.alert-success
             p=messages.info
     .container-fluid
-        h1=`${user.name}`
+        .row.justify-content-center
+            h1 Bienvenue sur la Back-Office !
+        .row
+            .col.text-center
+                h3 Ici c'est la gestion du site.
+                .bg-info.text-center
+                    h4.text-warning Aucun visiteur du site n'a accès à cette zone privée !!! (c'est pour ça que c'est moche ici ;-))
+        .row.mt-3.mb-3
+            .col.text-center.bg-success
+                h2 --- Mode d'emploi du site ---
+        .row.bg-light
+            .col-md-3.text-center
+                h4 Dashboard
+            .col-md-9
+                p C'est ici que sont resumé les données du jour concernant l'activité du site
+                p Il s'agit d'un coup d'oeil d'ensemble
+        .row.bg-dark.text-light
+            .col-md-3.text-center
+                h4 Oeuvres
+            .col-md-9
+                h5.text-danger Partie très importante !
+                p Toute la gestion des oeuvres se fait ici.
+                h5 Les oeuvres se trouvant ici se placent automatiquement sur la partie "client" du site. C'est à dire la partie que les 
+                    span.text-warning visiteurs voient.
+                p Il est possible d'ajouter, de modifier et de supprimer une oeuvre du site.
+                h6 il est important de
+                ul
+                    li Remplir des données correct
+                    li Mettre à jour si une oeuvre à été vendu
+                    li 
+                        strong Vérifier sur le coté "client" si l'oeuvre s'affiche correctement
+                    li Mettre offline une oeurve en cas d'erreur d'affichage (grace au bouton "offline")
+        .row.bg-light
+            .col-md-3.text-center
+                h4 Utilisateurs
+            .col-md-9
+                p Cette partie du site est en attente.
+                p Elle servira à la gestion des visiteurs qui s'inscrivent sur le site
+        .row.bg-dark.text-light
+            .col-md-3.text-center
+                h4 Commandes
+            .col-md-9
+                p Cette partie du site est en attente
+                p Elle servira à la gestion des commandes.
+        .row.bg-light
+            .col-md-3.text-center
+                h4 Messages
+            .col-md-9
+                p Les messages envoyé par les visiteurs arrivent ici !
+                p Il est important de bien marqué comme lu les messages lu.
+                p Cet espace est basique. Le tri et la recherche de message sont pervu pour la Version 2 du site.
+

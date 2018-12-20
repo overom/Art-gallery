@@ -83,7 +83,7 @@ const styles2 = theme => ({
 
 class SnackBarMessage extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
 
   handleClick = () => {
@@ -98,26 +98,21 @@ class SnackBarMessage extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div>
-        <Button className={classes.margin} onClick={this.handleClick}>
-          Open success snackbar
-        </Button>
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+            vertical: 'top',
+            horizontal: 'right',
           }}
           open={this.state.open}
-          autoHideDuration={6000}
+          autoHideDuration={7000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="success"
-            message="This is a success message!"
+            message="Message envoyé !"
           />
         </Snackbar>
       </div>
