@@ -13,7 +13,7 @@ class Contact extends Component {
         <Row className="justify-content-center mt-2">
           <h1>Contact</h1>
         </Row>
-        <FormContact /> 
+        <FormContact oeuvre={this.props.location.oeuvre} />
       </Container>
     );
   }

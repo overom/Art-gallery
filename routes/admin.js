@@ -38,6 +38,9 @@ router.get('/oeuvres/supprimeroeuvre/:id', (req, res) => controller.supprimeroeu
 //Messages
 router.get('/message/lu/:id', (req, res) => controller.messageLu(req, res));
 
+//Dashboard
+router.get('/chart', (req, res) => controller.drawChart(req, res));
+
 // A Supprimer CREATION DE COMPTE ADMIN
 router.get('/creercompte', (req, res) => controller.creercompte(req, res));
 router.post('/enregistrer', (req, res) => controller.enregistrer(req, res));

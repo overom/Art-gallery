@@ -9,6 +9,8 @@ router.get('/pictures/:name', (req, res) => {
   controller.sendFile(req, res);
 });
 
+router.get('/oeuvre/:id', (req, res) => controller.details(req, res));
+
 router.get('/current_user', (req, res) => controller.currentUser(req, res));
 
 router.get('/logout', (req, res) => controller.logout(req, res));

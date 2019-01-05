@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
 import CloseIcon from '@material-ui/icons/Close';
 import green from '@material-ui/core/colors/green';
-
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-
 import { withStyles } from '@material-ui/core/styles';
 
 const variantIcon = {
@@ -112,16 +108,14 @@ class SnackBarMessage extends React.Component {
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant="success"
-            message="Message envoyé !"
+            message={`Message envoyé ! Merci ${this.props.name}`}
           />
         </Snackbar>
       </div>
     );
   }
 }
-
 SnackBarMessage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 export default withStyles(styles2)(SnackBarMessage);

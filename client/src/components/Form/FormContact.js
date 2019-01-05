@@ -5,7 +5,6 @@ import { MenuItem, Button } from '@material-ui/core';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/fr';
-import SnackBarMessage from '../SnackBarMessage';
 import { withRouter } from 'react-router-dom';
 
 const sujet = [
@@ -28,11 +27,25 @@ class FormContact extends Component {
       email: '',
       sujet: '',
       message: '',
+
       state: false,
       date: moment().format('LLL'),
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { oeuvre } = this.props;
+
+    if (oeuvre) {
+      this.setState({
+        message: `Bonjour, Je suis interéssé par l'oeuvre ${oeuvre.name}. (numéro de réference ${
+          oeuvre.id
+        }). Merci de me contacter au 06........ Cordialement `,
+        sujet: `${sujet[0].value}`,
+      });
+    }
   }
   handleChange = name => event => {
     this.setState({
@@ -46,8 +59,7 @@ class FormContact extends Component {
     e.preventDefault();
     axios
       .post('/api/contact', { name, email, sujet, message, date, state })
-
-      .then(history.push({ pathname: '/', message: true }));
+      .then(history.push({ pathname: '/', message: name }));
   }
 
   render() {

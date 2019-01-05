@@ -56,16 +56,16 @@ block content
                     td
                         a.btn.btn-outline-info(href=`/admin/oeuvres/modifier/${oeuvre.id}`) Modifier
                     td            
-                        button.btn.btn-outline-danger(type='button', data-toggle='modal', data-target='#deleteModal') Supprimer
-                #deleteModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteModalLabel', aria-hidden='true')
-                    .modal-dialog(role='document')
-                        .modal-content
-                            .modal-header
-                                h5#deleteModalLabel.modal-title=`Supprimer l'oeuvre : ${oeuvre.name}`
-                                button.close(type='button', data-dismiss='modal', aria-label='Close')
-                                span(aria-hidden='true') ×
-                            .modal-body.text-center
-                                | Attention la suppression d'une oeuvre est definitive !
-                            .modal-footer
-                                button.btn.btn-secondary(type='button', data-dismiss='modal') Annuler
-                                a.btn.btn-danger(type='button' href=`/admin/oeuvres/supprimeroeuvre/${oeuvre.id}`)=`Supprimer ${oeuvre.name}`
+                        button.btn.btn-outline-danger(type='button', data-toggle='modal', data-target=`#${oeuvre.id}`)=`Supprimer`
+                        .modal.fade(id=`${oeuvre.id}` tabindex='-1', role='dialog', aria-labelledby='deleteModalLabel', aria-hidden='true')
+                            .modal-dialog(role='document')
+                                .modal-content
+                                    .modal-header
+                                        h5#deleteModalLabel.modal-title=`Supprimer l'oeuvre : ${oeuvre.name}`
+                                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    .modal-body.text-center
+                                        | Attention la suppression d'une oeuvre est definitive !
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button', data-dismiss='modal') Annuler
+                                        a.btn.btn-danger(type='button' href=`/admin/oeuvres/supprimeroeuvre/${oeuvre.id}`)=`Supprimer ${oeuvre.name}`

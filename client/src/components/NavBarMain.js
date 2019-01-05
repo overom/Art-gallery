@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import MenuIcon from '@material-ui/icons/Menu';
 import Navigation from './Navigation';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -16,6 +15,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { withRouter } from 'react-router';
+import ChristmasTypography from './styled/ChristmasTypography';
 
 const styles = {
   root: {
@@ -113,9 +113,9 @@ class NavBarMain extends Component {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="subtitle1" color="inherit" className={classes.grow} />
-              <Typography variant="h6" color="inherit" className={classes.grow}>
-                Galerie
-              </Typography>
+              <ChristmasTypography variant="h6" color="inherit" className={classes.grow}>
+                Galerie Patricia Denamur
+              </ChristmasTypography>
               <div>{this.renderContent()}</div>
             </Toolbar>
           </AppBar>

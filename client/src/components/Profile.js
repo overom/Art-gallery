@@ -20,6 +20,9 @@ class Profile extends Component {
   render() {
     const { classes } = this.props;
     const user = this.props.auth;
+    console.log('====================================');
+    console.log(user);
+    console.log('====================================');
     if (!user || user === null) {
       return (
         <Container>

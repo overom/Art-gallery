@@ -2,4 +2,74 @@ extends ../layout
 
 block content
     .container.mb-5
-        h3.mt-5.mb-3="Dashboard"
+        .row
+            h3.mt-5.mb-3="Dashboard"
+        .row
+            .col.mt-3
+                h4
+                    u="Messages"
+        .row
+            .col
+                if messagesOfTheDay
+                    h6=`Aujourd'hui vous avez reçu `
+                        span.text-danger=`${messagesOfTheDay.length}`
+                        span=` nouveaux messages.`
+                else
+                    h6 Vous n'avez aucun nouveau message
+        .row
+            .col
+                h6=`Vous avez au total `
+                    span.text-danger=`${unreadMessages.length}`
+                    span=` message(s) "Non Lu".`
+        hr
+        .row
+            .col.mt-3
+                h4
+                    u="Utilisateurs"
+        .row
+            .col
+                h6 Aucun nouvel utilisateur inscrit sur le site aujourd'hui.
+        hr
+        .row
+            .col.mt-3
+                h4
+                    u="Commandes"
+        .row
+            .col
+                h6 Aucune commande pour aujourd'hui.
+        hr
+        .row
+            .col.mt-3
+                h4
+                    u="Oeuvres"
+        .row
+            .col
+                if newOeuvres.length
+                    h6=`Félicitation`
+                        span.text-primary=` aujourd'hui`
+                        span=` vous avez ajouté `
+                        span.text-danger=`${newOeuvres.length}`
+                        span=` nouvelle(s) oeuvre(s) !!`
+                    .row
+                        .col.mt-2.pt-3
+                            ul.h6.list-group.mb-2=`Les nouvelles oeuvres sont : `
+                                each oeuvre in newOeuvres
+                                    li.mt-3.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center=oeuvre.name
+                                        span.badge.badge-primary.badge-pill=oeuvre.category
+                else
+                    h6 Aucune oeuvre ajouté aujourd'hui.
+        .row.justify-content-center.mt-2.pt-3
+            h6.mb-2=`Il y a actuellement `
+                span.text-danger=`${oeuvres.length}`
+                span=` oeuvres en ligne sur le site. `
+                br
+            h6
+                span.text-danger=`${oeuvreCategoryPersonnage.length}`
+                span=` oeuvres dans la categorie "Personnage", `
+                br
+            h6
+                span.text-danger=`${oeuvreCategoryTableaux.length}`
+                span=` oeuvres dans la categorie "Tableau".`
+        .row.justify-content-center.mt-2.pt-3
+            .col-6
+                canvas#chartjscategory.p-3

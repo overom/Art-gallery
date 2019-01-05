@@ -5,6 +5,11 @@ class ApiController {
   oeuvres(req, res) {
     db.Oeuvre.findAll().then(oeuvre => res.json(oeuvre));
   }
+
+  details(req, res) {
+    db.Oeuvre.findById(req.params.id).then(oeuvre => res.json(oeuvre));
+  }
+
   sendFile(req, res) {
     res.sendFile(path.resolve('public') + `/uploads/${req.params.name}`);
   }

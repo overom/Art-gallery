@@ -9,6 +9,9 @@ import Gallery from './Gallery';
 import Contact from './Contact';
 import Landing from './Landing';
 import { Helmet } from 'react-helmet';
+import '../assets/styles/main.css';
+import 'typeface-roboto';
+import Details from './Details';
 
 class App extends Component {
   componentDidMount() {
@@ -20,13 +23,16 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Helmet>
-            <style>{'body { background-color: #90a4ae; }'}</style>
+            <style>
+              {'body { background-color: #90a4ae; font-family: HelveticaNeue-Light, Helvetica }'}
+            </style>
           </Helmet>
           <NavBarMain />
           <Route exact path="/" component={Landing} />
 
           <Route path="/news" component={News} />
-          <Route path="/gallery" component={Gallery} />
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/gallery/:name" component={Details} />
           <Route path="/myaccount" component={Profile} />
           <Route path="/contact" component={Contact} />
         </div>

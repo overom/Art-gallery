@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import ChristmasTypography from './styled/ChristmasTypography';
+import ChristmasButton from './styled/ChristmasButton';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from 'react-share';
+import ChristmasCardContent from './styled/ChristmasCardContent';
 
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
-
-const styles = {
+const styles = theme => ({
   card: {
-    maxWidth: 345,
+    maxWidth: 645,
   },
   media: {
-    height: 250,
+    height: 650,
   },
   appBar: {
     position: 'relative',
@@ -35,11 +31,10 @@ const styles = {
   flex: {
     flex: 1,
   },
-};
-
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
+  background: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+});
 
 class OeuvreCard extends Component {
   state = { open: false };
@@ -52,82 +47,62 @@ class OeuvreCard extends Component {
   };
 
   render() {
-    const { classes, oeuvres } = this.props;
     console.log('====================================');
-    console.log(oeuvres);
+    console.log(this.props);
     console.log('====================================');
+    const { classes, oeuvres, history } = this.props;
 
     return (
       <div>
         <Card className={classes.card}>
-          <CardActionArea onClick={this.handleClickOpen}>
+          <CardActionArea
+            onClick={() => history.push({ pathname: `/gallery/${oeuvres.id}`, id: oeuvres.id })}
+          >
             <CardMedia
               className={classes.media}
-              image={`/api/pictures/${oeuvres.picture}`}
+              image={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
               title={oeuvres.name}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+            <ChristmasCardContent>
+              <ChristmasTypography gutterBottom variant="h5">
                 {oeuvres.name}
-              </Typography>
-
-              <Typography component="p" variant="subtitle1">
-                {`${oeuvres.price} €`}
-              </Typography>
-            </CardContent>
+              </ChristmasTypography>
+            </ChristmasCardContent>
           </CardActionArea>
-          <CardActions>
-            <Button size="large" color="primary" onClick={this.handleClickOpen}>
-              Détails
-            </Button>
-            <Button size="large" color="primary">
-              Acheter
-            </Button>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
+          <CardActions className="d-flex justify-content-between">
+            <div>
+              <ChristmasButton
+                size="medium"
+                color="primary"
+                onClick={() => history.push({ pathname: `/gallery/${oeuvres.id}`, id: oeuvres.id })}
+              >
+                Détails
+              </ChristmasButton>
+              <ChristmasButton
+                onClick={() => history.push({ pathname: '/contact', oeuvre: oeuvres })}
+                size="medium"
+                color="primary"
+              >
+                Acheter
+              </ChristmasButton>
+            </div>
+            <div className="d-flex flex-row">
+              <FacebookShareButton
+                hashtag="figurine"
+                className="mr-2"
+                url={`http://localhost:3000/${this.props.match.url}/${oeuvres.id}`}
+              >
+                <FacebookIcon size={30} round />
+              </FacebookShareButton>
+              <TwitterShareButton className="mr-2" url="#">
+                <TwitterIcon size={30} round />
+              </TwitterShareButton>
+              <WhatsappShareButton url="https://juliendenamur.com">
+                <WhatsappIcon size={30} round />
+              </WhatsappShareButton>
+            </div>
           </CardActions>
         </Card>
-        <Dialog
-          fullScreen
-          open={this.state.open}
-          onClose={this.handleClose}
-          TransitionComponent={Transition}
-        >
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
-                <CloseIcon />
-              </IconButton>
-              <Typography variant="h6" color="inherit" className={classes.flex}>
-                {oeuvres.name}
-              </Typography>
-              <Button color="inherit">Acheter</Button>
-            </Toolbar>
-          </AppBar>
-          <img src={`/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
-          <List>
-            <ListItem button>
-              <ListItemText className="text-center" primary="Details" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Taille" secondary={`${oeuvres.size} cm`} />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Description" secondary={oeuvres.description} />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Prix" secondary={`${oeuvres.price} €`} />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Matériaux Utilisées" secondary={`${oeuvres.materials}`} />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Créé le" secondary={`${oeuvres.date}`} />
-            </ListItem>
-          </List>
-        </Dialog>
       </div>
     );
   }
@@ -136,4 +111,4 @@ class OeuvreCard extends Component {
 OeuvreCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(OeuvreCard);
+export default withRouter(withStyles(styles)(OeuvreCard));

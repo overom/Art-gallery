@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import ChristmasTypography from './styled/ChristmasTypography';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: '100%',
     flexGrow: 1,
   },
   header: {
@@ -25,9 +25,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 400,
     display: 'block',
-    maxWidth: 400,
+    maxWidth: '100%',
     overflow: 'hidden',
     width: '100%',
   },
@@ -63,7 +63,10 @@ class SwipeableTextMobileStepper extends React.Component {
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{oeuvres[activeStep].name}</Typography>
+          <ChristmasTypography>
+            {oeuvres[activeStep].name} - {oeuvres[activeStep].size} cm - {oeuvres[activeStep].price}{' '}
+            €
+          </ChristmasTypography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -76,7 +79,7 @@ class SwipeableTextMobileStepper extends React.Component {
               {Math.abs(activeStep - index) <= 2 ? (
                 <img
                   className={classes.img}
-                  src={`/api/pictures/${step.picture}`}
+                  src={`http://localhost:5001/api/pictures/${step.picture}`}
                   alt={step.name}
                 />
               ) : null}

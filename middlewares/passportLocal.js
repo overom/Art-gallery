@@ -14,7 +14,7 @@ module.exports = passport.use(
       const generateHash = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 
       generateHash(password);
-      db.User.findOne({
+      db.Admin.findOne({
         where: {
           name: name,
         },

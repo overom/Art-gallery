@@ -39,12 +39,15 @@ class GridListPictures extends Component {
 
     return (
       <div className={classes.root}>
-        <GridList className={classes.gridList} cols={2.5}>
+        <GridList className={classes.gridList} cols={5.5} cellHeight={350}>
           <div />
           {oeuvres &&
             oeuvres.map(oeuvres => (
               <GridListTile key={oeuvres.name}>
-                <img src={`/api/pictures/${oeuvres.picture}`} alt={oeuvres.name} />
+                <img
+                  src={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
+                  alt={oeuvres.name}
+                />
               </GridListTile>
             ))}
         </GridList>

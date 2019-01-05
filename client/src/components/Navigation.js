@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import ChristamsTab from './styled/ChristmasTab';
 
 const styles = {
   root: {
@@ -22,9 +22,6 @@ class Navigation extends React.Component {
   };
 
   render() {
-    console.log('====================================');
-    console.log(this.state.value);
-    console.log('====================================');
     const { classes, history } = this.props;
 
     return (
@@ -37,10 +34,10 @@ class Navigation extends React.Component {
           textColor="primary"
           centered
         >
-          <Tab label="Accueil" onClick={() => history.push('/')} />
-          <Tab label="Nouveauté" onClick={() => history.push('/news')} />
-          <Tab label="Galerie" onClick={() => history.push('/gallery')} />
-          <Tab label="Contact" onClick={() => history.push('/contact')} />
+          <ChristamsTab label="Accueil" onClick={() => history.push('/')} />
+          <ChristamsTab label="Nouveautés" onClick={() => history.push('/news')} />
+          <ChristamsTab label="Galerie" onClick={() => history.push('/gallery')} />
+          <ChristamsTab label="Contact" onClick={() => history.push('/contact')} />
         </Tabs>
       </Paper>
     );

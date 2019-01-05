@@ -14,6 +14,9 @@ passport.use(
       const existingUser = await db.User.findOne({ googleId: profile.id });
 
       if (existingUser) {
+        console.log('====================================');
+        console.log(existingUser);
+        console.log('====================================');
         return done(null, existingUser);
       }
 

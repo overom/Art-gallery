@@ -43,7 +43,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
-  db.User.findById(id).then(user => {
+  db.Admin.findById(id).then(user => {
     if (user == null) {
       done(new Error('Wrong user id.'));
     }

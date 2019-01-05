@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-
 import { Container, Row, Col } from 'reactstrap';
-
+import Loader from './Loader';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import moment from 'moment';
 import 'moment/locale/fr';
 import OeuvreCard from './OeuvreCard';
 import CarouselSteppers from './CarouselSteppers';
+import illustationImage from '../assets/images/owl.png';
+import { withStyles } from '@material-ui/core/styles';
+import ChristmasTypography from './styled/ChristmasTypography';
 
+const styles = theme => ({
+  background: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+});
 class News extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { isLoading: true };
     this.getNewOeuvres = this.getNewOeuvres.bind(this);
   }
   componentDidMount() {
     this.props.fetchOeuvre();
+  }
+  componentWillReceiveProps() {
+    this.setState({ isLoading: false });
   }
 
   getNewOeuvres() {
@@ -35,7 +45,7 @@ class News extends Component {
           return (
             <img
               className="d-block w-100"
-              src={`/api/pictures/${oeuvres[0].picture}`}
+              src={`http://localhost:5001/api/pictures/${oeuvres[0].picture}`}
               alt={oeuvres[0].name}
             />
           );
@@ -72,29 +82,41 @@ class News extends Component {
     }
   }
   render() {
+    if (this.state.isLoading) {
+      return <Loader />;
+    }
     return (
-      <div>
+      <div className={this.props.classes.background}>
         <Container fluid>
-          <Row className="mt-2 mb-2 justify-content-center">
+          <Row className="mt-4 mb-2 justify-content-center">
             <h1>Nouveautés</h1>
           </Row>
-          <Paper elevation={24}>
+          <Row className={`justify-content-center`}>
+            <img
+              style={{ zIndex: '10' }}
+              className="img-fluid"
+              src={illustationImage}
+              alt="illustation"
+            />
+          </Row>
+
+          <Paper style={{ position: 'relative', bottom: '99px' }} elevation={24}>
             <Row>
-              <Col xs="12" md="6">
+              <Col xs="12" md="8">
                 {this.getNewOeuvres()}
               </Col>
-              <Col xs="12" md="6">
-                <Typography className="text-center mt-5" variant="h5">
+              <Col xs="12" md="4">
+                <ChristmasTypography className="text-center mt-5" variant="h5">
                   Découvrez les dernieres creations
-                </Typography>
+                </ChristmasTypography>
 
-                <Typography variant="h6" className="text-center mt-5">
+                <ChristmasTypography variant="h6" className="text-center mt-5">
                   {this.getNewOeuvresInfo()}
-                </Typography>
-                <Typography className="text-center mt-5" variant="subtitle2">
+                </ChristmasTypography>
+                <ChristmasTypography className="text-center mt-5" variant="subtitle2">
                   Retrouvez toutes les oeuvres dans la{' '}
                   <span onClick={() => this.props.history.push('/gallery')}>galerie</span>
-                </Typography>
+                </ChristmasTypography>
               </Col>
             </Row>
           </Paper>
@@ -108,7 +130,9 @@ function mapStateToProps({ oeuvres }) {
   return { oeuvres };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(News);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    actions
+  )(News)
+);

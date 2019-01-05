@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import OeuvreCard from './OeuvreCard';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
 import Loader from './Loader';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -18,7 +17,7 @@ class Gallery extends Component {
   render() {
     const { oeuvres } = this.props;
     return (
-      <Container>
+      <Container fluid>
         <Row className="justify-content-center mt-4">
           <h1>Galerie</h1>
         </Row>
@@ -29,7 +28,7 @@ class Gallery extends Component {
           ) : (
             oeuvres.map(oeuvre => {
               return (
-                <Col key={oeuvre.id} xs="12" sm="6" md="6" lg="3" className="mb-3">
+                <Col key={oeuvre.id} xs="12" sm="6" md="6" lg="4" className="mb-3">
                   <OeuvreCard oeuvres={oeuvre} />
                 </Col>
               );

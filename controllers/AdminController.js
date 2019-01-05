@@ -1,6 +1,8 @@
 const db = require(`../models/index.js`);
 const bcrypt = require('bcrypt-nodejs');
 const store = require('store');
+const moment = require('moment');
+require('moment/locale/fr');
 const messageCreationDate = require('../lib/parseDate');
 
 class AdminController {
@@ -34,7 +36,7 @@ class AdminController {
   enregistrer(req, res) {
     if (req.method === 'POST') {
       bcrypt.hash(req.body.password, null, null, (err, hash) => {
-        db.User.create({
+        db.Admin.create({
           ...req.body,
           ...{ admin: true, googleClient: false, password: hash },
         }).then(user => res.redirect('/admin'));
@@ -48,7 +50,87 @@ class AdminController {
 
   //Dashboard
   dashboard(req, res) {
-    res.render('dashboard/accueil');
+    const now = moment()
+      .format('LLL')
+      .split(' ');
+
+    async function data() {
+      const messagesOfTheDay = await db.Message.findAll().then(messages => {
+        return messages.filter(message => {
+          return (
+            message.date.split(' ')[0] === now[0] &&
+            message.date.split(' ')[1] === now[1] &&
+            message.date.split(' ')[2] === now[2]
+          );
+        });
+      });
+      const unreadMessages = await db.Message.findAll().then(messages => {
+        return messages.filter(message => {
+          return !message.state;
+        });
+      });
+      const newOeuvres = await db.Oeuvre.findAll().then(oeuvres => {
+        return oeuvres.filter(oeuvre => {
+          return (
+            moment(oeuvre.createdAt)
+              .format('LLL')
+              .split(' ')[0] === now[0] &&
+            moment(oeuvre.createdAt)
+              .format('LLL')
+              .split(' ')[1] === now[1] &&
+            moment(oeuvre.createdAt)
+              .format('LLL')
+              .split(' ')[2] === now[2]
+          );
+        });
+      });
+      const oeuvres = await db.Oeuvre.findAll().then(oeuvre => oeuvre);
+
+      const oeuvreCategoryPersonnage = await db.Oeuvre.findAll({
+        where: { category: 'Personnage' },
+      }).then(oeuvre => oeuvre);
+
+      const oeuvreCategoryTableaux = await db.Oeuvre.findAll({
+        where: { category: 'tableau' },
+      }).then(oeuvre => oeuvre);
+
+      res.render('dashboard/accueil', {
+        messagesOfTheDay,
+        unreadMessages,
+        newOeuvres,
+        oeuvres,
+        oeuvreCategoryPersonnage,
+        oeuvreCategoryTableaux,
+      });
+    }
+    data();
+  }
+  drawChart(req, res) {
+    function cleanArray(array) {
+      let i,
+        j,
+        len = array.length,
+        out = [],
+        obj = {};
+      for (i = 0; i < len; i++) {
+        obj[array[i]] = 0;
+      }
+      for (j in obj) {
+        out.push(j);
+      }
+      return out;
+    }
+    db.Oeuvre.findAll().then(oeuvre => {
+      const categoryArray = [];
+      const category = oeuvre.map(oeuvre => oeuvre.category);
+      const categoryAvailable = cleanArray(category);
+      const categoryPersonnage = oeuvre.filter(oeuvre => oeuvre.category === 'personnage').length;
+      const categoryTableaux = oeuvre.filter(oeuvre => oeuvre.category === 'tableau').length;
+      categoryArray.push(categoryPersonnage, categoryTableaux);
+      const creationDate = oeuvre.map(oeuvre => moment(oeuvre.createdAt).format('LL'));
+
+      res.json({ categoryAvailable, categoryArray, creationDate });
+    });
   }
 
   //Oeuvres
@@ -90,9 +172,12 @@ class AdminController {
   }
 
   supprimeroeuvre(req, res) {
-    db.Oeuvre.findById(req.params.id).then(oeuvre =>
-      oeuvre.destroy().then(() => res.redirect('/admin/oeuvres'))
-    );
+    db.Oeuvre.findById(req.params.id).then(oeuvre => {
+      console.log('====================================');
+      console.log(oeuvre);
+      console.log('====================================');
+      return oeuvre.destroy().then(() => res.redirect('/admin/oeuvres'));
+    });
   }
   //Messages
   messages(req, res) {
