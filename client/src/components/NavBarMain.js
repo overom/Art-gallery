@@ -116,7 +116,7 @@ class NavBarMain extends Component {
               <ChristmasTypography variant="h6" color="inherit" className={classes.grow}>
                 Galerie Patricia Denamur
               </ChristmasTypography>
-              <div>{this.renderContent()}</div>
+              {/* <div>{this.renderContent()}</div> */}
             </Toolbar>
           </AppBar>
         </div>

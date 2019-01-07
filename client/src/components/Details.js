@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
-import {
-  Dialog,
-  AppBar,
-  Toolbar,
-  IconButton,
-  ListItemText,
-  ListItem,
-  Divider,
-  Slide,
-} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, ListItemText, ListItem, Divider } from '@material-ui/core';
 import ChristmasTypography from './styled/ChristmasTypography';
 import ChristmasButton from './styled/ChristmasButton';
 import ChristmasList from './styled/ChristmasList';
@@ -34,10 +25,6 @@ const styles = theme => ({
   },
 });
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
-
 class Details extends Component {
   constructor(props) {
     super(props);
@@ -55,8 +42,12 @@ class Details extends Component {
   }
 
   handleClose = () => {
-    this.props.history.push('/gallery');
+    this.props.history.goBack();
   };
+
+  material(materiaux) {
+    return materiaux.split(',').join(', ');
+  }
 
   render() {
     const { oeuvres } = this.state;
@@ -116,18 +107,19 @@ class Details extends Component {
                 secondary={oeuvres.description}
               />
             </ListItem>
-            <ListItem button>
-              <ListItemText disableTypography primary="Prix : " secondary={`${oeuvres.price} €`} />
-            </ListItem>
+
             <ListItem button>
               <ListItemText
                 disableTypography
                 primary="Matériaux Utilisées : "
-                secondary={`${oeuvres.materials}`}
+                secondary={`${this.material(oeuvres.materials)}`}
               />
             </ListItem>
             <ListItem button>
               <ListItemText disableTypography primary="Créé le " secondary={`${oeuvres.date}`} />
+            </ListItem>
+            <ListItem button>
+              <ListItemText disableTypography primary="Prix : " secondary={`${oeuvres.price} €`} />
             </ListItem>
           </ChristmasList>
         </div>

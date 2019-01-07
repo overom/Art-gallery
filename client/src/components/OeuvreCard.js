@@ -85,13 +85,12 @@ class OeuvreCard extends Component {
             </div>
             <div className="d-flex flex-row">
               <FacebookShareButton
-                hashtag="figurine"
                 className="mr-2"
                 url={`http://localhost:3000/${this.props.match.url}/${oeuvres.id}`}
               >
                 <FacebookIcon size={30} round />
               </FacebookShareButton>
-              <TwitterShareButton className="mr-2" url="#">
+              <TwitterShareButton className="mr-2" url="https://juliendenamur.com">
                 <TwitterIcon size={30} round />
               </TwitterShareButton>
               <WhatsappShareButton url="https://juliendenamur.com">

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -56,7 +57,7 @@ class SwipeableTextMobileStepper extends React.Component {
   };
 
   render() {
-    const { classes, theme, oeuvres } = this.props;
+    const { classes, theme, oeuvres, history } = this.props;
     const { activeStep } = this.state;
     const maxSteps = oeuvres.length;
 
@@ -81,6 +82,7 @@ class SwipeableTextMobileStepper extends React.Component {
                   className={classes.img}
                   src={`http://localhost:5001/api/pictures/${step.picture}`}
                   alt={step.name}
+                  onClick={() => history.push({ pathname: `/gallery/${step.id}`, id: step.id })}
                 />
               ) : null}
             </div>
@@ -119,4 +121,4 @@ SwipeableTextMobileStepper.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(SwipeableTextMobileStepper);
+export default withRouter(withStyles(styles, { withTheme: true })(SwipeableTextMobileStepper));

@@ -71,7 +71,7 @@ class News extends Component {
   }
 
   getNewOeuvresInfo() {
-    const { oeuvres } = this.props;
+    const { oeuvres, history } = this.props;
     const tab = [];
     if (oeuvres) {
       oeuvres.map(oeuvre =>
@@ -101,7 +101,12 @@ class News extends Component {
           return <div>{newCreation[0].description}</div>;
         default:
           return newCreation.map(oeuvre => (
-            <div className="mb-2" key={oeuvre.name}>
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => history.push({ pathname: `/gallery/${oeuvre.id}`, id: oeuvre.id })}
+              className="mb-2"
+              key={oeuvre.name}
+            >
               Créé le {oeuvre.date} : <strong>{oeuvre.name}</strong>
             </div>
           ));
