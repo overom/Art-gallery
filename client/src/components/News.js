@@ -58,7 +58,7 @@ class News extends Component {
           return (
             <img
               className="d-block w-100"
-              src={`http://localhost:5001/api/pictures/${oeuvres[0].picture}`}
+              src={`/api/pictures/${oeuvres[0].picture}`}
               alt={oeuvres[0].name}
             />
           );

@@ -35,8 +35,8 @@ class Details extends Component {
     axios
       .get(
         this.props.location.id
-          ? `http://localhost:5001/api/oeuvre/${this.props.location.id}`
-          : `http://localhost:5001/api/oeuvre/${this.props.match.params.name}`
+          ? `/api/oeuvre/${this.props.location.id}`
+          : `/api/oeuvre/${this.props.match.params.name}`
       )
       .then(res => this.setState({ oeuvres: res.data }));
   }
@@ -80,7 +80,7 @@ class Details extends Component {
                 marginLeft: 'auto',
                 marginRight: 'auto',
               }}
-              src={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
+              src={`/api/pictures/${oeuvres.picture}`}
               alt={oeuvres.name}
             />
           </div>
