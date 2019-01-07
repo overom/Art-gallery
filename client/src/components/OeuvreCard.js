@@ -47,9 +47,6 @@ class OeuvreCard extends Component {
   };
 
   render() {
-    console.log('====================================');
-    console.log(this.props);
-    console.log('====================================');
     const { classes, oeuvres, history } = this.props;
 
     return (

@@ -4,8 +4,6 @@ import Loader from './Loader';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Paper } from '@material-ui/core';
-import moment from 'moment';
-import 'moment/locale/fr';
 import OeuvreCard from './OeuvreCard';
 import CarouselSteppers from './CarouselSteppers';
 import illustationImage from '../assets/images/owl.png';
@@ -32,14 +30,29 @@ class News extends Component {
 
   getNewOeuvres() {
     const { oeuvres } = this.props;
+    const tab = [];
     if (oeuvres) {
-      const day = moment()
-        .format('L')
-        .split('/');
+      oeuvres.map(oeuvre =>
+        tab.push(
+          oeuvre.date
+            .split('/')
+            .reverse()
+            .join('')
+        )
+      );
+      const ThreeLastOeuvres = tab.sort((a, b) => b - a).slice(0, 3);
       const newCreation = oeuvres.filter(oeuvre => {
-        const date = oeuvre.date.split('/');
-        return date[2] > day[2] - 1;
+        const dateOeuvre = oeuvre.date
+          .split('/')
+          .reverse()
+          .join('');
+        return (
+          dateOeuvre === ThreeLastOeuvres[0] ||
+          dateOeuvre === ThreeLastOeuvres[1] ||
+          dateOeuvre === ThreeLastOeuvres[2]
+        );
       });
+
       switch (newCreation.length) {
         case 0:
           return (
@@ -59,13 +72,27 @@ class News extends Component {
 
   getNewOeuvresInfo() {
     const { oeuvres } = this.props;
+    const tab = [];
     if (oeuvres) {
-      const day = moment()
-        .format('L')
-        .split('/');
+      oeuvres.map(oeuvre =>
+        tab.push(
+          oeuvre.date
+            .split('/')
+            .reverse()
+            .join('')
+        )
+      );
+      const ThreeLastOeuvres = tab.sort((a, b) => b - a).slice(0, 3);
       const newCreation = oeuvres.filter(oeuvre => {
-        const date = oeuvre.date.split('/');
-        return date[2] > day[2] - 1;
+        const dateOeuvre = oeuvre.date
+          .split('/')
+          .reverse()
+          .join('');
+        return (
+          dateOeuvre === ThreeLastOeuvres[0] ||
+          dateOeuvre === ThreeLastOeuvres[1] ||
+          dateOeuvre === ThreeLastOeuvres[2]
+        );
       });
       switch (newCreation.length) {
         case 0:
