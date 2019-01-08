@@ -6,6 +6,20 @@ class ApiController {
     db.Oeuvre.findAll().then(oeuvre => res.json(oeuvre));
   }
 
+  personnages(req, res) {
+    db.Oeuvre.findAll({ where: { category: 'personnage' } }).then(personnage =>
+      res.json(personnage)
+    );
+  }
+
+  tableaux(req, res) {
+    db.Oeuvre.findAll({ where: { category: 'tableau' } }).then(tableau => res.json(tableau));
+  }
+
+  hiboux(req, res) {
+    db.Oeuvre.findAll({ where: { category: 'hiboux' } }).then(hiboux => res.json(hiboux));
+  }
+
   details(req, res) {
     db.Oeuvre.findById(req.params.id).then(oeuvre => res.json(oeuvre));
   }

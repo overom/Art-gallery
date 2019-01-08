@@ -57,7 +57,7 @@ class OeuvreCard extends Component {
           >
             <CardMedia
               className={classes.media}
-              image={`/api/pictures/${oeuvres.picture}`}
+              image={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
               title={oeuvres.name}
             />
             <ChristmasCardContent>
@@ -79,14 +79,17 @@ class OeuvreCard extends Component {
                 onClick={() => history.push({ pathname: '/contact', oeuvre: oeuvres })}
                 size="medium"
                 color="primary"
+                disabled={oeuvres.state ? false : true}
               >
-                Acheter
+                {oeuvres.state ? `Acheter` : `Vendu`}
               </ChristmasButton>
             </div>
             <div className="d-flex flex-row">
               <FacebookShareButton
                 className="mr-2"
-                url={`http://localhost:3000/${this.props.match.url}/${oeuvres.id}`}
+                url={`https://art-gallery-patricia.herokuapp.com/${this.props.match.url}/${
+                  oeuvres.id
+                }`}
               >
                 <FacebookIcon size={30} round />
               </FacebookShareButton>

@@ -9,6 +9,7 @@ import CarouselSteppers from './CarouselSteppers';
 import illustationImage from '../assets/images/owl.png';
 import { withStyles } from '@material-ui/core/styles';
 import ChristmasTypography from './styled/ChristmasTypography';
+import Navigation from './Navigation';
 
 const styles = theme => ({
   background: {
@@ -58,7 +59,7 @@ class News extends Component {
           return (
             <img
               className="d-block w-100"
-              src={`/api/pictures/${oeuvres[0].picture}`}
+              src={`http://localhost:5001/api/pictures/${oeuvres[0].picture}`}
               alt={oeuvres[0].name}
             />
           );
@@ -119,6 +120,7 @@ class News extends Component {
     }
     return (
       <div className={this.props.classes.background}>
+        <Navigation value={this.props.location.value ? this.props.location.value : 1} />
         <Container fluid>
           <Row className="mt-4 mb-2 justify-content-center">
             <h1>Nouveautés</h1>

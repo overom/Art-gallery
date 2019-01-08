@@ -35,8 +35,8 @@ class Details extends Component {
     axios
       .get(
         this.props.location.id
-          ? `/api/oeuvre/${this.props.location.id}`
-          : `/api/oeuvre/${this.props.match.params.name}`
+          ? `http://localhost:5001/api/oeuvre/${this.props.location.id}`
+          : `http://localhost:5001/api/oeuvre/${this.props.match.params.name}`
       )
       .then(res => this.setState({ oeuvres: res.data }));
   }
@@ -66,8 +66,9 @@ class Details extends Component {
               <ChristmasButton
                 onClick={() => history.push({ pathname: '/contact', oeuvre: oeuvres })}
                 color="inherit"
+                disabled={oeuvres.state ? false : true}
               >
-                Acheter
+                {oeuvres.state ? `Acheter` : ``}
               </ChristmasButton>
             </Toolbar>
           </AppBar>
@@ -80,7 +81,7 @@ class Details extends Component {
                 marginLeft: 'auto',
                 marginRight: 'auto',
               }}
-              src={`/api/pictures/${oeuvres.picture}`}
+              src={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
               alt={oeuvres.name}
             />
           </div>

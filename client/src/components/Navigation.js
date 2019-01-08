@@ -21,6 +21,12 @@ class Navigation extends React.Component {
     this.setState({ value });
   };
 
+  componentDidMount() {
+    if (this.props.value) {
+      this.setState({ value: this.props.value });
+    }
+  }
+
   render() {
     const { classes, history } = this.props;
 
@@ -35,9 +41,18 @@ class Navigation extends React.Component {
           centered
         >
           <ChristamsTab label="Accueil" onClick={() => history.push('/')} />
-          <ChristamsTab label="Nouveautés" onClick={() => history.push('/news')} />
-          <ChristamsTab label="Galerie" onClick={() => history.push('/gallery')} />
-          <ChristamsTab label="Contact" onClick={() => history.push('/contact')} />
+          <ChristamsTab
+            label="Nouveautés"
+            onClick={() => history.push({ pathname: '/news', value: 1 })}
+          />
+          <ChristamsTab
+            label="Galerie"
+            onClick={() => history.push({ pathname: '/gallery', value: 2 })}
+          />
+          <ChristamsTab
+            label="Contact"
+            onClick={() => history.push({ pathname: '/contact', value: 3 })}
+          />
         </Tabs>
       </Paper>
     );

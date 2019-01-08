@@ -110,17 +110,16 @@ class NavBarMain extends Component {
     return (
       <div>
         <div className={classes.root}>
-          <AppBar position="static">
+          <AppBar position="static" style={{ backgroundColor: '#EFC49A' }}>
             <Toolbar>
-              <Typography variant="subtitle1" color="inherit" className={classes.grow} />
-              <ChristmasTypography variant="h6" color="inherit" className={classes.grow}>
-                Galerie Patricia Denamur
+              <Typography variant="subtitle1" className={classes.grow} />
+              <ChristmasTypography variant="h6" className={classes.grow}>
+                Galerie d'Art Patricia Denamur
               </ChristmasTypography>
               {/* <div>{this.renderContent()}</div> */}
             </Toolbar>
           </AppBar>
         </div>
-        <Navigation />
       </div>
     );
   }

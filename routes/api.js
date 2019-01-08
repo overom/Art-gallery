@@ -16,4 +16,9 @@ router.get('/current_user', (req, res) => controller.currentUser(req, res));
 router.get('/logout', (req, res) => controller.logout(req, res));
 
 router.post('/contact', (req, res) => controller.contact(req, res));
+
+router.get('/personnages', (req, res) => controller.personnages(req, res));
+router.get('/tableaux', (req, res) => controller.tableaux(req, res));
+router.get('/hiboux', (req, res) => controller.hiboux(req, res));
+
 module.exports = router;

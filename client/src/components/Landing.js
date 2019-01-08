@@ -11,6 +11,7 @@ import Presentation from './Presentation';
 import SnackBarMessage from './SnackBarMessage';
 import ChristmasTypography from './styled/ChristmasTypography';
 import PresentationPaper from './styled/PresentationPaper.js';
+import Navigation from './Navigation';
 const styles = theme => ({
   background: {
     backgroundColor: theme.palette.secondary.main,
@@ -38,6 +39,7 @@ class Landing extends Component {
     }
     return (
       <div>
+        <Navigation />
         <Container fluid className=" mb-5">
           <Row className="justify-content-center mt-3">
             <GridListPictures />

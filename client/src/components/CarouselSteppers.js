@@ -26,11 +26,10 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 550,
+    height: 450,
     display: 'block',
     maxWidth: '100%',
     overflow: 'hidden',
-    width: '100%',
   },
 });
 
@@ -74,13 +73,15 @@ class SwipeableTextMobileStepper extends React.Component {
           index={activeStep}
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
+          style={{ backgroundColor: '#90a4ae' }}
         >
           {oeuvres.map((step, index) => (
             <div key={step.name}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img
+                  style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }}
                   className={classes.img}
-                  src={`/api/pictures/${step.picture}`}
+                  src={`http://localhost:5001/api/pictures/${step.picture}`}
                   alt={step.name}
                   onClick={() => history.push({ pathname: `/gallery/${step.id}`, id: step.id })}
                 />

@@ -94,6 +94,10 @@ class AdminController {
         where: { category: 'tableau' },
       }).then(oeuvre => oeuvre);
 
+      const oeuvreCategoryHiboux = await db.Oeuvre.findAll({
+        where: { category: 'hiboux' },
+      }).then(oeuvre => oeuvre);
+
       res.render('dashboard/accueil', {
         messagesOfTheDay,
         unreadMessages,
@@ -101,6 +105,7 @@ class AdminController {
         oeuvres,
         oeuvreCategoryPersonnage,
         oeuvreCategoryTableaux,
+        oeuvreCategoryHiboux,
       });
     }
     data();
@@ -126,7 +131,8 @@ class AdminController {
       const categoryAvailable = cleanArray(category);
       const categoryPersonnage = oeuvre.filter(oeuvre => oeuvre.category === 'personnage').length;
       const categoryTableaux = oeuvre.filter(oeuvre => oeuvre.category === 'tableau').length;
-      categoryArray.push(categoryPersonnage, categoryTableaux);
+      const categoryHiboux = oeuvre.filter(oeuvre => oeuvre.category === 'hiboux').length;
+      categoryArray.push(categoryPersonnage, categoryTableaux, categoryHiboux);
       const creationDate = oeuvre.map(oeuvre => moment(oeuvre.createdAt).format('LL'));
 
       res.json({ categoryAvailable, categoryArray, creationDate });
@@ -136,6 +142,8 @@ class AdminController {
   //Oeuvres
   oeuvres(req, res) {
     db.Oeuvre.findAll().then(oeuvres => {
+      oeuvres.reverse();
+
       res.render('oeuvres/liste', { oeuvres });
     });
   }
@@ -173,15 +181,13 @@ class AdminController {
 
   supprimeroeuvre(req, res) {
     db.Oeuvre.findById(req.params.id).then(oeuvre => {
-      console.log('====================================');
-      console.log(oeuvre);
-      console.log('====================================');
       return oeuvre.destroy().then(() => res.redirect('/admin/oeuvres'));
     });
   }
   //Messages
   messages(req, res) {
     db.Message.findAll().then(messages => {
+      messages.reverse();
       res.render('messages/liste', { messages });
     });
   }

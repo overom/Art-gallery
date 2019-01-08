@@ -12,6 +12,9 @@ import { Helmet } from 'react-helmet';
 import '../assets/styles/main.css';
 import 'typeface-roboto';
 import Details from './Details';
+import PersonnagesGallery from './PersonnagesGallery';
+import TableauxGallery from './TableauxGallery';
+import HibouxGallery from './HibouxGallery';
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +32,14 @@ class App extends Component {
           </Helmet>
           <NavBarMain />
           <Route exact path="/" component={Landing} />
-
           <Route path="/news" component={News} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/gallery/:name" component={Details} />
           <Route path="/myaccount" component={Profile} />
           <Route path="/contact" component={Contact} />
+          <Route path="/personnages" component={PersonnagesGallery} />
+          <Route path="/tableaux" component={TableauxGallery} />
+          <Route path="/hiboux" component={HibouxGallery} />
         </div>
       </BrowserRouter>
     );
