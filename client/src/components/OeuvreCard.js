@@ -57,7 +57,7 @@ class OeuvreCard extends Component {
           >
             <CardMedia
               className={classes.media}
-              image={`http://localhost:5001/api/pictures/${oeuvres.picture}`}
+              image={`/api/pictures/${oeuvres.picture}`}
               title={oeuvres.name}
             />
             <ChristmasCardContent>

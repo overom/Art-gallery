@@ -81,7 +81,7 @@ class SwipeableTextMobileStepper extends React.Component {
                 <img
                   style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }}
                   className={classes.img}
-                  src={`http://localhost:5001/api/pictures/${step.picture}`}
+                  src={`/api/pictures/${step.picture}`}
                   alt={step.name}
                   onClick={() => history.push({ pathname: `/gallery/${step.id}`, id: step.id })}
                 />
