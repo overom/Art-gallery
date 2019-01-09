@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import Navigation from './Navigation';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -113,9 +112,10 @@ class NavBarMain extends Component {
           <AppBar position="static" style={{ backgroundColor: '#EFC49A' }}>
             <Toolbar>
               <Typography variant="subtitle1" className={classes.grow} />
-              <ChristmasTypography variant="h6" className={classes.grow}>
+              <ChristmasTypography variant="h5" className={classes.grow}>
                 Galerie d'Art Patricia Denamur
               </ChristmasTypography>
+
               {/* <div>{this.renderContent()}</div> */}
             </Toolbar>
           </AppBar>

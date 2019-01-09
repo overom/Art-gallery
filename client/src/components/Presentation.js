@@ -46,37 +46,32 @@ class Presentation extends Component {
               <ChristmasTypography className={classes.typo} variant="h6">
                 Galerie
               </ChristmasTypography>
-              <ChristmasTypography variant="body1">
-                Cette galerie d'art est née de l'envie de Patricia Denamur de faire partager sa
-                passion des figurines. Depuis 3 ans elle confectionne des peties dames, petit sac à
-                mains en bandoulière ou bras chargés de fleurs...
+              <ChristmasTypography className="text-justify" variant="body1">
+                Cette galerie d'art est née de mon envie de faire partager ma passion des figurines.
+                Depuis 3 ans je confectionne des petites dames, petit sac à mains ou en bandoulière
+                ou bras chargés de fleurs… Venez les découvrir, elles vous attendent...
               </ChristmasTypography>
               <ChristmasTypography variant="body1">
                 Venez les découvrir, elles vous attendent...
               </ChristmasTypography>
-              <ChristmasTypography className={classes.typo} variant="h6">
+              <ChristmasTypography className={`${classes.typo} mt-2`} variant="h6">
                 Technique utilisée
               </ChristmasTypography>
-              <ChristmasTypography variant="body1">
-                La figurine est réalisée en papier mâché, recouverte d'argile, sans utilisation de
-                moules. Les cheveux sont en mohair naturel pour la plupart, les fleus sont
-                naturelles (petits boutons de roses séchées). La figurine est uniquement créée à des
-                fins décoratives, à traiter avec beaucoup d'attention et à protéger de l'humidité.
+              <ChristmasTypography className="text-justify" variant="body1">
+                La figurine est réalisée en papier mâché et argile, recouverte de papier ou de tissu
+                vernis, sans utilisation de moules. Les cheveux sont en mohair naturel pour la
+                plupart, les fleurs sont naturelles (petits boutons de roses séchées). La figurine
+                est uniquement créée à des fins décoratives, à traiter avec beaucoup d'attention et
+                à protéger de l’humidité. Chaque figurine est unique.
               </ChristmasTypography>
               <ChristmasTypography variant="body1">Chaque figurine est unique.</ChristmasTypography>
-              <ChristmasTypography className={classes.typo} variant="h6">
+              <ChristmasTypography className={`${classes.typo} mt-2`} variant="h6">
                 Biographie
               </ChristmasTypography>
-              <ChristmasTypography variant="body1">
-                Patricia Denamur est une artiste autodidacte.
-              </ChristmasTypography>
-              <ChristmasTypography variant="body1">
-                Du pastel sec qu'elle a pratiqué durant des années elle est passée au papier mâché
-                qu'elle affectionne aujourd'hui.
-              </ChristmasTypography>
-              <ChristmasTypography variant="body1">
-                Guidé par le plaisir d'imaginer, de façonner, de décorer...elle donne vie à des
-                personnages miniatures.
+              <ChristmasTypography className="text-justify" variant="body1">
+                Je suis une artiste autodidacte. Du pastel sec que j’ai pratiqué durant des années
+                je suis passée au papier mâché que j’affectionne aujourd’hui. Guidée par le plaisir
+                d'imaginer, de façonner, de décorer, je donne vie à des personnages miniatures.
               </ChristmasTypography>
             </PresentationPaper>
           </Col>

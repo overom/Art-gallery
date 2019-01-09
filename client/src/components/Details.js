@@ -87,7 +87,7 @@ class Details extends Component {
           </div>
           <ChristmasList>
             <ListItem button>
-              <ListItemText disableTypography className="text-center" primary="Details" />
+              <ListItemText disableTypography className="text-center" primary="Détails" />
             </ListItem>
             <Divider />
             <ListItem button>
@@ -112,7 +112,7 @@ class Details extends Component {
             <ListItem button>
               <ListItemText
                 disableTypography
-                primary="Matériaux Utilisées : "
+                primary="Principaux matériaux utilisés : "
                 secondary={`${this.material(oeuvres.materials)}`}
               />
             </ListItem>

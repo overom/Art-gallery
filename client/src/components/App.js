@@ -15,6 +15,7 @@ import Details from './Details';
 import PersonnagesGallery from './PersonnagesGallery';
 import TableauxGallery from './TableauxGallery';
 import HibouxGallery from './HibouxGallery';
+import Footer from './Footer';
 
 class App extends Component {
   componentDidMount() {
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path="/personnages" component={PersonnagesGallery} />
           <Route path="/tableaux" component={TableauxGallery} />
           <Route path="/hiboux" component={HibouxGallery} />
+          <Footer />
         </div>
       </BrowserRouter>
     );

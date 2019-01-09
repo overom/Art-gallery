@@ -40,7 +40,7 @@ class FormContact extends Component {
 
     if (oeuvre) {
       this.setState({
-        message: `Bonjour, Je suis interéssé par l'oeuvre ${oeuvre.name}. (numéro de réference ${
+        message: `Bonjour, Je suis intéressé par l'oeuvre ${oeuvre.name}. (numéro de réference ${
           oeuvre.id
         }). Merci de me contacter au 06........ Cordialement `,
         sujet: `${sujet[0].value}`,

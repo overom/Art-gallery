@@ -37,7 +37,7 @@ if (app.get('env') === 'production') {
 app.use(session(sess));
 
 require('./middlewares/passportLocal');
-require('./middlewares/passportGoogle');
+//require('./middlewares/passportGoogle');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

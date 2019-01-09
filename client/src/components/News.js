@@ -108,7 +108,7 @@ class News extends Component {
               className="mb-2"
               key={oeuvre.name}
             >
-              Créé le {oeuvre.date} : <strong>{oeuvre.name}</strong>
+              <strong>{oeuvre.name}</strong> <p>{oeuvre.description}</p>
             </div>
           ));
       }
@@ -141,7 +141,7 @@ class News extends Component {
               </Col>
               <Col xs="12" md="4">
                 <ChristmasTypography className="text-center mt-5" variant="h5">
-                  Découvrez les dernieres creations
+                  Découvrez les dernières créations
                 </ChristmasTypography>
 
                 <ChristmasTypography variant="h6" className="text-center mt-5">
@@ -149,7 +149,7 @@ class News extends Component {
                 </ChristmasTypography>
                 <ChristmasTypography className="text-center mt-5" variant="subtitle2">
                   Retrouvez toutes les oeuvres dans la{' '}
-                  <span onClick={() => this.props.history.push('/gallery')}>galerie</span>
+                  <span onClick={() => this.props.history.push('/gallery')}>galerie.</span>
                 </ChristmasTypography>
               </Col>
             </Row>

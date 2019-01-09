@@ -48,7 +48,7 @@ class Landing extends Component {
             <Col className=" pt-3">
               <PresentationPaper elevation={24} className="p-5">
                 <ChristmasTypography className={classes.typo} align="center" variant="h6">
-                  Figurines en papier mâché, subtiles et légères ou dodues et revrêches...leur point
+                  Figurines en papier mâché, subtiles et légères ou dodues et revêches... leur point
                   commun : se faire admirer !
                 </ChristmasTypography>
               </PresentationPaper>
@@ -69,8 +69,8 @@ class Landing extends Component {
               <PresentationPaper elevation={24} className="p-5">
                 <ChristmasTypography align="center" variant="h6">
                   Figurines faites à la main, sans utilisation de moules. Papier mâché et technique
-                  mixte. Parfois sur socle. Recouvertes de papier vernis ou tissus teinté, peintes
-                  avec des peintures acryliques et vernies, conçues uniquement à des fins
+                  mixte. Parfois sur socle. Recouvertes de papier verni ou de tissus teinté puis
+                  peintes avec des peintures acryliques et vernies, conçues uniquement à des fins
                   décoratives. Chaque modèle est unique.
                 </ChristmasTypography>
               </PresentationPaper>

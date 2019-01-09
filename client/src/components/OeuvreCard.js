@@ -93,10 +93,19 @@ class OeuvreCard extends Component {
               >
                 <FacebookIcon size={30} round />
               </FacebookShareButton>
-              <TwitterShareButton className="mr-2" url="https://juliendenamur.com">
+              <TwitterShareButton
+                className="mr-2"
+                url={`https://art-gallery-patricia.herokuapp.com/${this.props.match.url}/${
+                  oeuvres.id
+                }`}
+              >
                 <TwitterIcon size={30} round />
               </TwitterShareButton>
-              <WhatsappShareButton url="https://juliendenamur.com">
+              <WhatsappShareButton
+                url={`https://art-gallery-patricia.herokuapp.com/${this.props.match.url}/${
+                  oeuvres.id
+                }`}
+              >
                 <WhatsappIcon size={30} round />
               </WhatsappShareButton>
             </div>
