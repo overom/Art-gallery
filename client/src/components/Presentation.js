@@ -48,7 +48,7 @@ class Presentation extends Component {
               </ChristmasTypography>
               <ChristmasTypography className="text-justify" variant="body1">
                 Cette galerie d'art est née de mon envie de faire partager ma passion des figurines.
-                Depuis 3 ans je confectionne des petites dames, petit sac à mains ou en bandoulière
+                Depuis 4 ans je confectionne des petites dames, petit sac à mains ou en bandoulière
                 ou bras chargés de fleurs… Venez les découvrir, elles vous attendent...
               </ChristmasTypography>
               <ChristmasTypography variant="body1">
@@ -58,20 +58,22 @@ class Presentation extends Component {
                 Technique utilisée
               </ChristmasTypography>
               <ChristmasTypography className="text-justify" variant="body1">
-                La figurine est réalisée en papier mâché et argile, recouverte de papier ou de tissu
-                vernis, sans utilisation de moules. Les cheveux sont en mohair naturel pour la
-                plupart, les fleurs sont naturelles (petits boutons de roses séchées). La figurine
-                est uniquement créée à des fins décoratives, à traiter avec beaucoup d'attention et
-                à protéger de l’humidité. Chaque figurine est unique.
+                La figurine est réalisée en partie en papier mâché, la tête, les mains et les jambes
+                sont en argile. Elle est recouverte de papier verni ou de tissu, sans utilisation de
+                moules. Les cheveux sont en mohair naturel pour la plupart, les fleurs sont vraies
+                (petits boutons de roses séchées). La figurine est uniquement créée à des fins
+                décoratives, à traiter avec beaucoup d'attention et à protéger de l’humidité. Chaque
+                figurine est unique.
               </ChristmasTypography>
               <ChristmasTypography variant="body1">Chaque figurine est unique.</ChristmasTypography>
               <ChristmasTypography className={`${classes.typo} mt-2`} variant="h6">
                 Biographie
               </ChristmasTypography>
               <ChristmasTypography className="text-justify" variant="body1">
-                Je suis une artiste autodidacte. Du pastel sec que j’ai pratiqué durant des années
-                je suis passée au papier mâché que j’affectionne aujourd’hui. Guidée par le plaisir
-                d'imaginer, de façonner, de décorer, je donne vie à des personnages miniatures.
+                Je suis une artiste autodidacte. Du pastel sec puis de l’acrylique que j’ai
+                pratiqués durant des années je suis passée au papier mâché que j’affectionne
+                aujourd’hui. Guidée par le plaisir d'imaginer, de façonner, de décorer, je donne vie
+                à des personnages miniatures.
               </ChristmasTypography>
             </PresentationPaper>
           </Col>

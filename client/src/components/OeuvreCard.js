@@ -81,7 +81,7 @@ class OeuvreCard extends Component {
                 color="primary"
                 disabled={oeuvres.state ? false : true}
               >
-                {oeuvres.state ? `Acheter` : `Vendu`}
+                {oeuvres.state ? `Acheter` : `Collection privée`}
               </ChristmasButton>
             </div>
             <div className="d-flex flex-row">

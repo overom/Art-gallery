@@ -159,8 +159,11 @@ class AdminController {
     data.materials = materials;
 
     const { picture } = req.files;
+
     if (picture) {
-      picture.mv(`public/uploads/${picture.name}`, () => {
+      picture.mv(`public/uploads/${picture.name}`, err => {
+        if (err) return res.status(500).send(err);
+
         data.picture = picture.name;
         req.flash('success', `Oeuvre ${req.body.name} ajouté avec succès`);
         return db.Oeuvre.create(data).then(oeuvre => res.redirect('/admin/oeuvres'));
@@ -171,16 +174,16 @@ class AdminController {
     }
   }
   modifierOeuvre(req, res) {
-    db.Oeuvre.findById(req.params.id).then(oeuvre => res.render('oeuvres/modifier', { oeuvre }));
+    db.Oeuvre.findByPk(req.params.id).then(oeuvre => res.render('oeuvres/modifier', { oeuvre }));
   }
   saveModificationOeuvre(req, res) {
-    db.Oeuvre.findById(req.params.id).then(oeuvre => {
+    db.Oeuvre.findByPk(req.params.id).then(oeuvre => {
       oeuvre.update(req.body).then(() => res.redirect('/admin/oeuvres'));
     });
   }
 
   supprimeroeuvre(req, res) {
-    db.Oeuvre.findById(req.params.id).then(oeuvre => {
+    db.Oeuvre.findByPk(req.params.id).then(oeuvre => {
       return oeuvre.destroy().then(() => res.redirect('/admin/oeuvres'));
     });
   }
@@ -192,7 +195,7 @@ class AdminController {
     });
   }
   messageLu(req, res) {
-    db.Message.findById(req.params.id).then(message => {
+    db.Message.findByPk(req.params.id).then(message => {
       message.state ^= 1;
       message.save();
       res.redirect('/admin/messages');
